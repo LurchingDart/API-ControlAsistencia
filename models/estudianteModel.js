@@ -26,6 +26,10 @@ const studentSchema = new Schema ({
             message: props => `${props.value} no es un correo valido!`
         }
     },
+    password: {
+        type: String,
+        required: true
+    },
     grade: {
         type: Number,
         default: 1,
@@ -34,22 +38,18 @@ const studentSchema = new Schema ({
     group: {
         type: Schema.Types.ObjectId,
         ref: 'group',
-        required: true,
-        default: undefined
+        required: true
     },
-    subject: {
+    subjects: [{
         type: Schema.Types.ObjectId,
         ref: 'subject',
-        required: true,
-        default: undefined
-    },
+        required: true
+    }],
     teacher: {
         type: Schema.Types.ObjectId,
         ref: 'teacher',
-        required: true,
-        default: undefined
+        required: true
     }
-
 })
 
 module.exports = (connection) => connection.model('student', studentSchema);

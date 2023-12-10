@@ -82,4 +82,32 @@ routes.post("/", async (req, res) => {
     }
 });
 
+routes.put("/:id", async (req, res) => {
+    const connection = await mongoose.createConnection(urlDB);
+    try {
+        const GrupoModel = GrupoModelCreator(connection);
+        const data = await GrupoModel.findByIdAndUpdate(req.params.id, req.body);
+        res.json(data);
+        connection.close();
+    } catch (error) {
+        connection.close();
+        res.status(500);
+        res.json({ error: error.message });
+    }
+});
+
+routes.delete("/:id", async (req, res) => {
+    const connection = await mongoose.createConnection(urlDB);
+    try {
+        const GrupoModel = GrupoModelCreator(connection);
+        const data = await GrupoModel.findByIdAndDelete(req.params.id);
+        res.json(data);
+        connection.close();
+    } catch (error) {
+        connection.close();
+        res.status(500);
+        res.json({ error: error.message });
+    }
+});
+
 module.exports = routes;

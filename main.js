@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //------Routes------//
-const testRoute = require('./routes/testRoute');
 const adminRoute = require('./routes/loginAdminRoute');
 const asistenciaRoute = require('./routes/asistenciaRoute');
 const estudianteRoute = require('./routes/estudianteRoute');
@@ -23,7 +22,6 @@ const registroRoute = require('./routes/registerRoute');
 const registroAdminRoute = require('./routes/registerAdminRoute');
 
 //------Endpoints------//
-app.use("/api/test", testRoute);
 app.use("/api/asistencia", asistenciaRoute);
 app.use("/api/estudiante", estudianteRoute);
 app.use("/api/grupo", grupoRoute);
