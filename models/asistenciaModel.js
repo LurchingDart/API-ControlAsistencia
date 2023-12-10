@@ -7,6 +7,11 @@ const attendanceSchema = new Schema ({
         ref: 'student',
         default: undefined
     },
+    group: {
+        type: Schema.Types.ObjectId,
+        ref: 'group',
+        default: undefined
+    },
     subject: {
         type: Schema.Types.ObjectId,
         ref: 'subject',

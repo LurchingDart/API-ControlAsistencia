@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const groupSchema = new Schema ({
     number: {
-        type: Number,
+        type: String,
         required: true
     },
     teacher: {
@@ -26,7 +26,6 @@ const groupSchema = new Schema ({
         ref: 'attendance',
         default: undefined
     }]
-
-})
+});
 
 module.exports = (connection) => connection.model('group', groupSchema);
