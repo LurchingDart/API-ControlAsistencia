@@ -1,0 +1,30 @@
+{
+  "name": "api-controlasistencia",
+  "version": "0.0.1",
+  "description": "An API for the ControlAsistencia project to connect the website with the database",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LurchingDart/API-ControlAsistenica.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "LurchingDart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LurchingDart/API-ControlAsistenica/issues"
+  },
+  "homepage": "https://github.com/LurchingDart/API-ControlAsistenica#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3",
+    "validator": "^13.11.0"
+  }
+}
