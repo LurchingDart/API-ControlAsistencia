@@ -8,13 +8,13 @@ This is a simple API designed to managing school-related information, including 
 ### 1. Attendance
 Attendance is a model that represents the attendance of a student in a particular class. It has the following fields:
 - `student`: The student that attended the class (reference to Student Model).
+- `group`: The group of the class (reference to Group Model).
 - `subject`: The subject of the class (reference to Subject Model).
 - `status`: The status of the student in the class. It can be one of the following:
     - `attended`: The student attended the class.
     - `excused`: The student was excused from the class.
     - `late`: The student was late to the class.
     - `absent`: The student was absent from the class.
-    - `unexcused`: The student was unexcused from the class.
     - `unknown`: The status of the student is unknown.
 - `comment`: A comment about the student's attendance.
 - `dateData`: The date of the class. It has the following fields:
@@ -74,10 +74,26 @@ This API has the following routes (all routes are prefixed with `/api`):
 - `POST /attendance`: Creates a new attendance record.
 - `PUT /attendance/:id`: Updates the attendance record with the specified ID.
 - `DELETE /attendance/:id`: Deletes the attendance record with the specified ID.
-- `GET /attendance/student/:id`: Gets all the attendance records of the student with the specified ID.
-- `GET /attendance/subject/:id`: Gets all the attendance records of the subject with the specified ID.
-
-- `GET /attendance/group/:id`: Gets all the attendance records of the group with the specified ID.
+#### The main route for attendance is `/attendance`. It has the following sub-routes:
+- `GET /:id`: Gets the attendance record with the specified ID.
+- `GET /student/:studentID`: Gets all the attendance records of the student with the specified ID.
+- `GET /student/:studentID/date/:year/:month/:day`: Gets all the attendance records of the student with the specified ID in the specified date.
+- `GET /student/:studentID/group/:groupID`: Gets all the attendance records of the student with the specified ID in the specified group.
+- `GET /student/:studentID/subject/:subjectID`: Gets all the attendance records of the student with the specified ID in the specified subject.
+- `GET /student/:studentID/group/:groupID/subject/:subjectID`: Gets all the attendance records of the student with the specified ID in the specified group and subject.
+- `GET /group/:groupID`: Gets all the attendance records of the group with the specified ID.
+- `GET /group/:groupID/date/:year/:month/:day`: Gets all the attendance records of the group with the specified ID in the specified date.
+- `GET /group/:groupID/subject/:subjectID`: Gets all the attendance records of the group with the specified ID in the specified subject.
+- `GET /group/:groupID/subject/:subjectID/date/:year/:month/:day`: Gets all the attendance records of the group with the specified ID in the specified subject and date.
+- `GET /subject/:subjectID`: Gets all the attendance records of the subject with the specified ID.
+- `GET /subject/:subjectID/date/:year/:month/:day`: Gets all the attendance records of the subject with the specified ID in the specified date.
+- `GET /subject/:subjectID/group/:groupID/student/:studentID/date/:year/:month/:day`: Gets all the attendance records of the subject with the specified ID in the specified group, student and date.
+- `GET /student/:studentID/status/:status`: Gets all the attendance records of the student with the specified ID with the specified status.
+- `GET /subject/:id`: Gets all the attendance records of the subject with the specified ID.
+- `GET /student/:studentID/status/:status`: Gets all the attendance records of the student with the specified ID with the specified status.
+- `GET /group/:groupID/status/:status`: Gets all the attendance records of the group with the specified ID with the specified status.
+- `GET /subject/:subjectID/status/:status`: Gets all the attendance records of the subject with the specified ID with the specified status.
+- `GET /group/:groupID/subject/:subjectID/status/:status`: Gets all the attendance records of the group with the specified ID in the specified subject with the specified status.
 
 ### 2. Student
 - `GET /student`: Gets all the students.

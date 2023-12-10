@@ -19,9 +19,13 @@ const attendanceSchema = new Schema ({
     },
     status: {
         type: String,
-        enum: ['attended', 'excused', 'late', 'absent', 'unexcused', 'unknown'],
+        enum: ['attended', 'excused', 'late', 'absent', 'unknown'],
         default: 'unknown',
         required: true
+    },
+    comment: {
+        type: String,
+        default: ''
     },
     dateData: {
         day: {
@@ -43,6 +47,10 @@ const attendanceSchema = new Schema ({
         minute: {
             type: Number,
             default: new Date().getMinutes()
+        },
+        second: {
+            type: Number,
+            default: new Date().getSeconds()
         }
     }
 });
