@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const EstudianteModelCreator = require('../models/estudianteModel');
 const GrupoModelCreator = require('../models/grupoModel');
 const ProfesorModelCreator = require('../models/profesorModel');
+const MateriasModelCreator = require('../models/materiaModel');
 const routes = Router();
 const urlDB = "mongodb://localhost:27017";
 
@@ -90,8 +91,10 @@ routes.get("/teacher/:teacherID", async (req, res) => {
     const connection = await mongoose.createConnection(urlDB);
     try {
         const ProfesorModel = ProfesorModelCreator(connection);
+        const MateriasModel = MateriasModelCreator(connection);
+        const GrupoModel = GrupoModelCreator(connection);
         const EstudianteModel = EstudianteModelCreator(connection);
-        const data = await EstudianteModel.find({ "teacher": req.params.teacherID }).populate("teacher");
+        const data = await EstudianteModel.find({ "teacher": req.params.teacherID }).populate("group").populate("subjects");
         res.json(data);
         connection.close();
     } catch (error) {
