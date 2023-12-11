@@ -1,11 +1,80 @@
+const express = require('express');
 const { Router } = require('express');
+const mongoose = require('mongoose');
+const ProfesorModelCreator = require('../models/profesorModel');
+const EstudianteModelCreator = require('../models/estudianteModel');
 const routes = Router();
+const urlDB = "mongodb://localhost:27017";
 
-//------Endpoints------//
+const jwt = require('jsonwebtoken');
+const jwt_token = 'TOKEN';
 
-//------GET------//
-routes.get("/", (req, res) => {
-    res.send("Register");
-});
+routes.post("/profesor", async (req, res) => {
+    const connection = await mongoose.createConnection(urlDB);
+    try {
+        const ProfesorModel = ProfesorModelCreator(connection);
+        const { name, lastName, email, password } = req.body;
+
+        if (! (name && lastName && email && password)) {
+            res.status(400).send("All input is required");
+        }
+
+        let data = await ProfesorModel.findOne({ "email": req.body.email });
+
+        if (data) {
+            res.status(400).send("User Already Exist. Please Login or Register using another email");
+        } else {
+            let user = ProfesorModel(req.body);
+            data = await user.save();
+            const token = jwt.sign(
+                { _id: data._id, email },
+                jwt_token,
+                {
+                    expiresIn: "168h",
+                }
+            );
+            user = { ...user._doc, token };
+            res.status(200).json(user);
+            connection.close();
+        }
+        } catch (error) {
+            console.log(error);
+            res.send("Error en el servidor");
+        }
+    });
+
+routes.post("/estudiante", async (req, res) => {
+    const connection = await mongoose.createConnection(urlDB);
+    try {
+        const EstudianteModel = EstudianteModelCreator(connection);
+        const { studentId, name, lastName, email, password, grade, group, teacher } = req.body;
+
+        if (! (studentId && name && lastName && email && password && grade && group && teacher)) {
+            res.status(400).send("All input is required");
+        }
+
+        let data = await EstudianteModel.findOne({ "email": req.body.email });
+
+        if (data) {
+            res.status(400).send("User Already Exist. Please Login or Register using another email");
+        } else {
+            let user = new EstudianteModel(req.body);
+            data = await user.save();
+            const token = jwt.sign(
+                { _id: data._id, email },
+                jwt_token,
+                {
+                    expiresIn: "168h",
+                }
+            );
+            user = { ...user._doc, token };
+            res.status(200).json(user);
+            connection.close();
+        }
+        } catch (error) {
+            console.log(error);
+            res.send("Error en el servidor");
+        }
+})
 
 module.exports = routes;

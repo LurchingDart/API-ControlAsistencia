@@ -26,6 +26,10 @@ const adminSchema = new Schema ({
         type: String,
         required: true
     },
+    role : {
+        type: String,
+        default: 'admin'
+    }
 })
 
 module.exports = (connection) => connection.model('admin', adminSchema);

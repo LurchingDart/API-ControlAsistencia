@@ -9,6 +9,7 @@ const app = express();
 //------Middleware------//
 app.use(bodyParser.json());
 app.use(cors());
+const { auth, authorize } = require('./auth');
 
 //------Routes------//
 const adminRoute = require('./routes/loginAdminRoute');
@@ -21,8 +22,9 @@ const profesorRoute = require('./routes/profesorRoute');
 const registroRoute = require('./routes/registerRoute');
 const registroAdminRoute = require('./routes/registerAdminRoute');
 
+
 //------Endpoints------//
-app.use("/api/asistencia", asistenciaRoute);
+app.use("/api/asistencia", auth, authorize(['admin', 'teacher']), asistenciaRoute);
 app.use("/api/estudiante", estudianteRoute);
 app.use("/api/grupo", grupoRoute);
 app.use("/login-admin", adminRoute);

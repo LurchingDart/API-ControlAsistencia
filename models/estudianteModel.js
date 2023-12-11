@@ -43,12 +43,15 @@ const studentSchema = new Schema ({
     subjects: [{
         type: Schema.Types.ObjectId,
         ref: 'subject',
-        required: true
     }],
     teacher: {
         type: Schema.Types.ObjectId,
         ref: 'teacher',
         required: true
+    },
+    role : {
+        type: String,
+        default: 'student'
     }
 })
 
