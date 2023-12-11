@@ -5,23 +5,22 @@ const attendanceSchema = new Schema ({
     student: {
         type: Schema.Types.ObjectId,
         ref: 'student',
-        default: undefined
+        required: true
     },
     group: {
         type: Schema.Types.ObjectId,
         ref: 'group',
-        default: undefined
+        required: true
     },
     subject: {
         type: Schema.Types.ObjectId,
         ref: 'subject',
-        default: undefined
+        required: true
     },
     status: {
         type: String,
         enum: ['attended', 'excused', 'late', 'absent', 'unknown'],
         default: 'unknown',
-        required: true
     },
     comment: {
         type: String,
