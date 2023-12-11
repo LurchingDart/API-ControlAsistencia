@@ -12,7 +12,6 @@ app.use(cors());
 const { auth, authorize } = require('./auth');
 
 //------Routes------//
-const adminRoute = require('./routes/loginAdminRoute');
 const asistenciaRoute = require('./routes/asistenciaRoute');
 const estudianteRoute = require('./routes/estudianteRoute');
 const grupoRoute = require('./routes/grupoRoute');
@@ -20,19 +19,16 @@ const loginRoute = require('./routes/loginRoute');
 const materiaRoute = require('./routes/materiaRoute');
 const profesorRoute = require('./routes/profesorRoute');
 const registroRoute = require('./routes/registerRoute');
-const registroAdminRoute = require('./routes/registerAdminRoute');
 
 
 //------Endpoints------//
 app.use("/api/asistencia", auth, authorize(['admin', 'teacher']), asistenciaRoute);
-app.use("/api/estudiante", estudianteRoute);
+app.use("/api/estudiante", auth, authorize(['admin', 'teacher', 'student']),estudianteRoute);
 app.use("/api/grupo", grupoRoute);
-app.use("/login-admin", adminRoute);
 app.use("/login", loginRoute);
-app.use("/api/materia", materiaRoute);
+app.use("/api/materia", auth, authorize(['admin', 'teacher']),materiaRoute);
 app.use("/api/profesor", profesorRoute);
 app.use("/registro", registroRoute);
-app.use("/registro-admin", registroAdminRoute);
 
 //------Main endpoint------//
 app.get("/api", (req, res) => {
