@@ -42,7 +42,6 @@ app.get("/api", (req, res) => {
 //------Server------//
 
 app.listen(9000, () => {
-    console.log("Listo pa jalar en el puerto 9000");
 });
 
 module.exports = app;
