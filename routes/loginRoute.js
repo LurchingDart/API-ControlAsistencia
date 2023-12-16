@@ -5,7 +5,7 @@ const ProfesorModelCreator = require('../models/profesorModel');
 const EstudianteModelCreator = require('../models/estudianteModel');
 const AdminModelCreator = require('../models/adminModel');
 const routes = Router();
-const urlDB = "mongodb+srv://test:HGWJGI7tfgNtpxAm@asistencia.4nf2nve.mongodb.net/?retryWrites=true&w=majority";
+const urlDB = "mongodb+srv://test:HGWJGI7tfgNtpxAm@asistencia.4nf2nve.mongodb.net/test";
 
 const jwt = require('jsonwebtoken');
 const jwt_token = 'TOKEN';

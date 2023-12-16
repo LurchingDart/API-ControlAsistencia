@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const ProfesorModelCreator = require('../models/profesorModel');
 const MateriasModelCreator = require('../models/materiaModel');
 const routes = Router();
-const urlDB = "mongodb+srv://test:HGWJGI7tfgNtpxAm@asistencia.4nf2nve.mongodb.net/?retryWrites=true&w=majority";
+const urlDB = "mongodb+srv://test:HGWJGI7tfgNtpxAm@asistencia.4nf2nve.mongodb.net/test";
 
 //------Endpoints------//
 routes.get("/", async (req, res) => {
