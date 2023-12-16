@@ -31,6 +31,10 @@ app.use("/api/profesor", profesorRoute);
 app.use("/registro", registroRoute);
 
 //------Main endpoint------//
+app.get("/", (req, res) => {
+    res.send("Welcome to the API of the ControlAsistencia project, for more information visit: https://github.com/LurchingDart/API-ControlAsistenica");
+});
+
 app.get("/api", (req, res) => {
     res.send("Welcome to the API of the ControlAsistencia project, for more information visit: https://github.com/LurchingDart/API-ControlAsistenica");
 });
