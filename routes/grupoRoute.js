@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const Router = require('express');
 const mongoose = require('mongoose');
 const GrupoModelCreator = require('../models/grupoModel');
 const ProfesorModelCreator = require('../models/profesorModel');

@@ -35,10 +35,6 @@ app.get("/", (req, res) => {
     res.send("Welcome to the API of the ControlAsistencia project, for more information visit: https://github.com/LurchingDart/API-ControlAsistenica");
 });
 
-app.get("/api", (req, res) => {
-    res.send("Welcome to the API of the ControlAsistencia project, for more information visit: https://github.com/LurchingDart/API-ControlAsistenica");
-});
-
 //------Server------//
 
 app.listen(9000, () => {
