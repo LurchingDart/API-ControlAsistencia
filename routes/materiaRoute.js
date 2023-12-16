@@ -2,7 +2,7 @@ const { Router } = require('express');
 const mongoose = require('mongoose');
 const MateriaModelCreator = require('../models/materiaModel');
 const routes = Router();
-const urlDB = "mongodb://localhost:27017";
+const urlDB = process.env.MONGODB_URL;
 
 //------Endpoints------//
 routes.get("/", async (req, res) => {

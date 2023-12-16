@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const GrupoModelCreator = require('../models/grupoModel');
 const ProfesorModelCreator = require('../models/profesorModel');
 const routes = Router();
-const urlDB = "mongodb://localhost:27017";
+const urlDB = process.env.MONGODB_URL;
 
 //------Endpoints------//
 

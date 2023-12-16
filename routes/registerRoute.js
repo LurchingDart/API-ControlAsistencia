@@ -5,7 +5,7 @@ const ProfesorModelCreator = require('../models/profesorModel');
 const EstudianteModelCreator = require('../models/estudianteModel');
 const AdminModelCreator = require('../models/adminModel');
 const routes = Router();
-const urlDB = "mongodb://localhost:27017";
+const urlDB = process.env.MONGODB_URL;
 
 const jwt = require('jsonwebtoken');
 const jwt_token = 'TOKEN';
