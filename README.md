@@ -1,4 +1,5 @@
 # School Managment System API
+[![Implementation Status](https://img.shields.io/badge/Status-In%20Development-yellow)](https://asistencia-one.vercel.app/)
 
 ## Description
 This is a simple API designed to managing school-related information, including attendance, students, subjects and teachers. The API is built using node.js and express.js, and uses a MongoDB database.
